@@ -2,9 +2,8 @@ import std.stdio, std.file;
 
 uint MAX_PROG_LEN = 30000;
 
-void main(string[] args) {
-    auto program = cast(string) read(args[1], MAX_PROG_LEN);
 
+void interpret(string program) {
     // prepare VM
     ubyte[3000] data;   // hmm,,,
     uint data_ptr = 0;
@@ -57,5 +56,16 @@ void main(string[] args) {
 	default: break;
 	}
     }
+}
+
+
+void main(string[] args) {
+    if (args.length < 2) {
+	writeln("no file given.");
+	return;
+    }
+
+    auto program = cast(string) read(args[1], MAX_PROG_LEN);
+    interpret(program);
     writeln();
 }
