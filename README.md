@@ -1,3 +1,3 @@
 # About
 
-brainf*ck interpriter written in D.
+brainf*ck interpreter written in D.
