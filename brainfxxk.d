@@ -28,27 +28,27 @@ void interpret(string program) {
     }
     case '[': {
       if (data[data_ptr] == 0) {
-	instruction_ptr++;
-	while (loop_depth > 0 || program[instruction_ptr] != ']') {
-	  if (program[instruction_ptr] == '[') {
-	    loop_depth++;
-	  } else if (program[instruction_ptr] == ']') {
-	    loop_depth--;
-	  }
-	  instruction_ptr++;
-	} 
+        instruction_ptr++;
+        while (loop_depth > 0 || program[instruction_ptr] != ']') {
+          if (program[instruction_ptr] == '[') {
+            loop_depth++;
+          } else if (program[instruction_ptr] == ']') {
+            loop_depth--;
+          }
+          instruction_ptr++;
+        } 
       }
       break;
     }
     case ']': {
       instruction_ptr--;
       while (loop_depth >0 || program[instruction_ptr] != '[') {
-	if (program[instruction_ptr] == ']') {
-	  loop_depth++;
-	} else if (program[instruction_ptr] == '[') {
-	  loop_depth--;
-	}
-	instruction_ptr--;
+        if (program[instruction_ptr] == ']') {
+          loop_depth++;
+        } else if (program[instruction_ptr] == '[') {
+          loop_depth--;
+        }
+        instruction_ptr--;
       }
       instruction_ptr--;
       break;
