@@ -24,11 +24,11 @@ LOOP:
         pc++;
         goto LOOP;
     case '+':
-        *ptr += 1;
+        (*ptr)++;
         pc++;
         goto LOOP;
     case '-':
-        *ptr -= 1;
+        (*ptr)--;
         pc++;
         goto LOOP;
     case '.':
