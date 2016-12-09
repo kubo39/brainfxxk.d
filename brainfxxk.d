@@ -7,8 +7,6 @@ void interpret(string code)
     auto pc = code.ptr;  // pointer to current instruction.
     char[MAX_PROGRAM_LENGTH] data = void;  // zero-initialized,thanks by dmd!
     auto ptr = data.ptr;  // pointer to curent data position.
-    int depth;  // Loop depth.
-
     auto start = pc;
 LOOP:
     if ((pc - start) >= code.length)
@@ -24,11 +22,11 @@ LOOP:
         pc++;
         goto LOOP;
     case '+':
-        (*ptr)++;
+        ++*ptr;  // or (*ptr)++
         pc++;
         goto LOOP;
     case '-':
-        (*ptr)--;
+        --*ptr;  // or (*ptr)--
         pc++;
         goto LOOP;
     case '.':
@@ -45,6 +43,7 @@ LOOP:
         if (*ptr == 0)
         {
             pc++;
+            int depth;  // Loop depth.
             while (depth > 0 || *pc != ']')
             {
                 if (*pc == '[') depth++;
@@ -56,6 +55,7 @@ LOOP:
         goto LOOP;
     case ']':
         pc--;
+        int depth;  // Loop depth.
         while (depth > 0 || *pc != '[')
         {
             if (*pc == ']') depth++;
