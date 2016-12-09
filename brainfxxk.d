@@ -36,9 +36,9 @@ LOOP:
         pc++;
         goto LOOP;
     case ',':
-        char[] buf;
+        char[] buf = void;
         stdin.readln(buf);
-        *ptr = cast(char) buf[0];
+        *ptr = buf[0];
         pc++;
         goto LOOP;
     case '[':
